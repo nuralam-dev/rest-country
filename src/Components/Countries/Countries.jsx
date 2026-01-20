@@ -1,11 +1,19 @@
-import React from 'react';
+import { use } from "react";
+import Country from "./Country";
 
-const Countries = () => {
-    return (
-        <div>
-            hello bangladesh
-        </div>
-    );
+import'./Countries.css'
+
+const Countries = ({ countriesPromise }) => {
+  const countries = use(countriesPromise);
+  console.log(countries);
+  return (
+    <div className="grid">
+      <h1>Rest Countries : {countries.length}</h1>
+      {countries.map((country) => (
+        <Country country={country}></Country>
+      ))}
+    </div>
+  );
 };
 
 export default Countries;
